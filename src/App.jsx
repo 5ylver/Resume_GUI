@@ -1,5 +1,7 @@
-import Home from './components/sections/Home'
 import Navbar from './components/sections/Navbar'
+import Home from './components/sections/Home'
+import Features from './components/sections/Features'
+import Resume from './components/sections/Resume'
 import { styles } from './styles/style'
 
 const App = () => {
@@ -15,9 +17,16 @@ const App = () => {
         </div>
       </div>
 
-      <div>Features</div>
+      <div className={`${styles.paddingX} ${styles.flexCenter}`}>
+        <Features />
+      </div>
 
-      <div>Resume</div>
+      {/* No responsive for now */}
+      <div className="bg-white/90 hidden lg:flex">
+        <div className="w-full px-80">
+          <Resume />
+        </div>
+      </div>
     </div>
   )
 }
