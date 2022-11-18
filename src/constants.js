@@ -12,3 +12,5 @@ export const navLinks = [
     title: 'Resume',
   },
 ]
+
+export const sentences = ['in just minutes.', '& download in PDF.']

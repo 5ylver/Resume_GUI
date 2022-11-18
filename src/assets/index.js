@@ -15,6 +15,9 @@ import js from './js.svg'
 import resume from './resume.png'
 import github from './github.svg'
 import addcircle from './add.svg'
+import print from './print.svg'
+import linkedin from './linkedin.svg'
+import chevron from './chevron.svg'
 
 export {
   close,
@@ -34,4 +37,7 @@ export {
   resume,
   github,
   addcircle,
+  print,
+  chevron,
+  linkedin,
 }

@@ -2,6 +2,7 @@ import Navbar from './components/sections/Navbar'
 import Home from './components/sections/Home'
 import Features from './components/sections/Features'
 import Resume from './components/sections/Resume'
+import { DataProvider } from './components/DataContext'
 import { styles } from './styles/style'
 
 const App = () => {
@@ -23,8 +24,10 @@ const App = () => {
 
       {/* No responsive for now */}
       <div className="bg-white/90 hidden lg:flex">
-        <div className="w-full px-80">
-          <Resume />
+        <div className="w-full">
+          <DataProvider>
+            <Resume />
+          </DataProvider>
         </div>
       </div>
     </div>

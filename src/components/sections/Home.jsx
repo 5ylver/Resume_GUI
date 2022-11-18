@@ -1,11 +1,10 @@
 import Button from '../Button'
 import { TypeText } from '../TypeText'
+import { sentences } from '../../constants'
 import { card } from '../../assets'
 import { styles } from '../../styles/style'
 
 const Home = () => {
-  const words = [' in just minutes.', ' & download in PDF.']
-
   return (
     <section
       id="home"
@@ -19,11 +18,13 @@ const Home = () => {
         </h1>
 
         <p className="text-2xl font-thin font-abril">
-          Create a resume
-          <TypeText words={words} loop={3} />
+          Create a resume {''}
+          <TypeText words={sentences} loop={3} />
         </p>
         <div className="my-12 mx-auto sm:mx-0">
-          <Button variant="secondary" text="Create resume" />
+          <a href="#resume">
+            <Button variant="secondary" text="Create resume" />
+          </a>
         </div>
       </div>
 
