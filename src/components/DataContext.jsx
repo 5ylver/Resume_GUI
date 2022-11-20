@@ -5,7 +5,7 @@ const DataContext = createContext()
 
 export const DataProvider = ({ children }) => {
   const [fontName, setFontName] = useState({
-    size: '6xl',
+    size: '5xl',
     family: 'abril',
   })
   const [fontAboutMe, setFontAboutMe] = useState({
@@ -14,6 +14,7 @@ export const DataProvider = ({ children }) => {
   })
   const [showgit, setShowgit] = useState(true)
   const [showlinkedin, setShowlinkedin] = useState(true)
+  const [showWebsite, setWebsite] = useState(true)
 
   return (
     <DataContext.Provider
@@ -26,6 +27,8 @@ export const DataProvider = ({ children }) => {
         setShowgit,
         showlinkedin,
         setShowlinkedin,
+        showWebsite,
+        setWebsite,
       }}
     >
       {children}

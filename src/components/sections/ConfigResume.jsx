@@ -1,9 +1,10 @@
 import { useContext, useState } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { useReactToPrint } from 'react-to-print'
 import DataContext from '../DataContext'
 import { chevron, print } from '../../assets'
 
+// eslint-disable-next-line react/prop-types
 const ConfigResume = ({ componentRef }) => {
   const [openOption, setOpenOption] = useState({
     op1: true,
@@ -20,9 +21,12 @@ const ConfigResume = ({ componentRef }) => {
     showgit,
     showlinkedin,
     setShowlinkedin,
+    showWebsite,
+    setWebsite,
   } = useContext(DataContext)
 
   const handlePrint = useReactToPrint({
+    // eslint-disable-next-line react/prop-types
     content: () => componentRef.current,
   })
 
@@ -187,6 +191,21 @@ const ConfigResume = ({ componentRef }) => {
           } flex-col relative py-2 before:content-[''] before:block before:absolute before:inset-0 before:top-4 before:bottom-4 before:right-auto before:ml-[2.3rem] before:bg-secondary before:w-[1px]`}
         >
           <div className="flex items-center gap-4 pl-[4rem] py-3 text-base text-white">
+            <span>Website:</span>
+            <div className="flex items-center">
+              <label htmlFor="website" className="mx-2 text-sm font-medium">
+                Show
+              </label>
+              <input
+                id="website"
+                type="checkbox"
+                checked={showWebsite}
+                onChange={() => setWebsite((prev) => !prev)}
+                className="w-4 h-4 rounded accent-secondary"
+              />
+            </div>
+          </div>
+          <div className="flex items-center gap-4 pl-[4rem] py-3 text-base text-white">
             <span>GitHub:</span>
             <div className="flex items-center">
               <label htmlFor="github" className="mx-2 text-sm font-medium">
@@ -230,11 +249,11 @@ const ConfigResume = ({ componentRef }) => {
   )
 }
 
-ConfigResume.propTypes = {
-  componentRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(ConfigResume) }),
-  ]),
-}
+// ConfigResume.propTypes = {
+//   componentRef: PropTypes.oneOfType([
+//     PropTypes.func,
+//     PropTypes.shape({ current: PropTypes.instanceOf(ConfigResume) }),
+//   ]),
+// }
 
 export default ConfigResume

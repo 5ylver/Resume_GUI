@@ -1,4 +1,4 @@
-import { useRef, useContext } from 'react'
+import { useRef, useContext, useState } from 'react'
 import ConfigResume from './ConfigResume'
 import DragDropSkills from '../DragDropSkills'
 import DataContext from '../DataContext'
@@ -8,7 +8,10 @@ import { github, linkedin } from '../../assets'
 const Resume = () => {
   const componentRef = useRef()
   const textRef = useRef()
-  const { fontAboutMe, fontName, showgit, showlinkedin } =
+  const [githubInp, setGithubInp] = useState('')
+  const [linkedinInp, setLinkedinInp] = useState('')
+  const [webInp, setWebInp] = useState('')
+  const { fontAboutMe, fontName, showgit, showlinkedin, showWebsite } =
     useContext(DataContext)
 
   const onChangeText = (e) => {
@@ -51,52 +54,98 @@ const Resume = () => {
           <div className="w-[275px] flex flex-col p-3">
             <Photo />
 
-            <input
-              type="text"
-              className="w-full mt-5 outline-none focus:bg-slate-200 focus:rounded-lg pl-1"
-              placeholder="Address"
-            />
-            <input
-              type="text"
-              className="w-full outline-none focus:bg-slate-200 focus:rounded-lg pl-1"
-              placeholder="Phone"
-            />
-            <input
-              type="text"
-              className="text-sm w-full mt-1 outline-none focus:bg-slate-200 focus:rounded-lg pl-1"
-              placeholder="Email"
-            />
-            <input
-              type="text"
-              className="text-sm w-full outline-none focus:bg-slate-200 focus:rounded-lg pl-1"
-              placeholder="Website"
-            />
-            <div
-              className={`${
-                showgit ? 'flex' : 'hidden'
-              } mt-3 items-center gap-1`}
-            >
-              <img src={github} alt="github" className="w-5" />
+            <div className=" mt-5">
               <input
                 type="text"
-                className="text-xs w-full outline-none focus:bg-slate-200 focus:rounded-lg pl-1"
-                placeholder="github.com"
+                className="w-full outline-none focus:bg-slate-200 focus:rounded pl-1"
+                placeholder="Address"
               />
-            </div>
-            <div
-              className={`${
-                showlinkedin ? 'flex' : 'hidden'
-              } mt-1 items-center gap-1`}
-            >
-              <img src={linkedin} alt="linkedin" className="w-5" />
               <input
                 type="text"
-                className="text-xs w-full outline-none focus:bg-slate-200 focus:rounded-lg pl-1"
-                placeholder="linkedin.com"
+                className="w-full outline-none focus:bg-slate-200 focus:rounded pl-1"
+                placeholder="Phone"
               />
+
+              <div className="mt-1">
+                <input
+                  type="text"
+                  className="text-sm w-full outline-none focus:bg-slate-200 focus:rounded pl-1"
+                  placeholder="Email"
+                />
+                <a
+                  href={webInp}
+                  contentEditable
+                  suppressContentEditableWarning
+                  className={`${showWebsite ? 'flex' : 'hidden'}`}
+                  value={webInp}
+                  onChange={(e) => setWebInp(e.target.value)}
+                >
+                  <input
+                    type="text"
+                    className="text-sm w-full outline-none focus:bg-slate-200 focus:rounded pl-1"
+                    placeholder="Website"
+                  />
+                </a>
+              </div>
+
+              <div className={`${(showgit || showlinkedin) && 'mt-3'}`}>
+                <div
+                  className={`${
+                    showgit ? 'flex' : 'hidden'
+                  }  items-center gap-1`}
+                >
+                  <img src={github} alt="github" className="w-5" />
+                  <a
+                    href={githubInp}
+                    contentEditable
+                    suppressContentEditableWarning
+                    className="flex"
+                  >
+                    <input
+                      type="text"
+                      placeholder="github.com"
+                      className="w-full text-xs outline-none focus:bg-slate-200 focus:rounded pl-1"
+                      value={githubInp}
+                      onChange={(e) => setGithubInp(e.target.value)}
+                    />
+                  </a>
+                </div>
+                <div
+                  className={`${
+                    showlinkedin ? 'flex' : 'hidden'
+                  } mt-1 items-center gap-1`}
+                >
+                  <img src={linkedin} alt="linkedin" className="w-5" />
+                  <a
+                    href={linkedinInp}
+                    contentEditable
+                    suppressContentEditableWarning
+                    className="flex"
+                  >
+                    <input
+                      type="text"
+                      placeholder="linkedin.com"
+                      className="w-full text-xs outline-none focus:bg-slate-200 focus:rounded pl-1"
+                      value={linkedinInp}
+                      onChange={(e) => setLinkedinInp(e.target.value)}
+                    />
+                  </a>
+                </div>
+              </div>
             </div>
 
             <DragDropSkills />
+
+            <div className="mt-6 w-full">
+              <h1 className="text-sm font-semibold inline-flex bg-red-300">
+                EDUCATION
+              </h1>
+              <input
+                type="text"
+                placeholder="University"
+                className="text-base w-full mt-1 font-bold outline-none focus:bg-slate-200 focus:rounded pl-1"
+              />
+            </div>
           </div>
         </div>
       </div>
